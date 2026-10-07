@@ -26,7 +26,7 @@ Copy the open email, quoted thread included, as clean Markdown for LLMs, Obsidia
 <p><b>What you get</b></p>
 <ul>
 <li>YAML frontmatter with subject, sender, recipients, date, message id and attachment names, so the result is ready for note-taking tools and automation.</li>
-<li>The quoted reply chain split into one section per message, titled by sender and date. Outlook, Gmail and Apple Mail quoting styles are all recognised, including deeply nested threads.</li>
+<li>The quoted reply chain split into one section per message, titled by sender and date. Outlook, Gmail and Apple Mail quoting styles are all recognized, including deeply nested threads.</li>
 <li>Real Markdown for formatting that matters: headings, bold and italic, lists, links and tables. Signature strips and layout tables are unwrapped so their text survives without raw HTML.</li>
 <li>Links rewritten by mail security gateways (Microsoft Defender Safe Links and similar) are unwrapped back to the original URL where the target is recoverable.</li>
 </ul>
@@ -44,7 +44,7 @@ Copy the open email, quoted thread included, as clean Markdown for LLMs, Obsidia
 
 <p><b>Works in</b> new Outlook for Windows, Outlook on the web, and classic Outlook for Windows and Mac (Mailbox requirement set 1.8 or later).</p>
 
-<p>Copy as Markdown is free and open source (MIT licence). Source code, issue tracker and contribution guide: <a href="https://github.com/lonelyquasar/outlook-markdown-exporter">github.com/lonelyquasar/outlook-markdown-exporter</a></p>
+<p>Copy as Markdown is free and open source (MIT license). Source code, issue tracker and contribution guide: <a href="https://github.com/lonelyquasar/outlook-markdown-exporter">github.com/lonelyquasar/outlook-markdown-exporter</a></p>
 
 ## Search keywords
 
@@ -87,7 +87,7 @@ frontmatter and a split reply chain, ready to copy."
 
 ## Notes for certification
 
-Copy as Markdown needs no account, sign-in, licence key or purchase. It has
+Copy as Markdown needs no account, sign-in, license key or purchase. It has
 no server component.
 
 To test:

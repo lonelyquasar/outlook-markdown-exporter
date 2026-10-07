@@ -59,7 +59,7 @@ Alice, can you send the status?
 - Optionally strips **signatures and boilerplate** (on by default): signature
   blocks, "Sent from my iPhone" client footers, confidentiality disclaimers,
   image-only social icon rows, and 1×1 tracking pixels. A signature is
-  recognised by shape — a layout table holding a handful of short lines, one of
+  recognized by shape — a layout table holding a handful of short lines, one of
   which is an address — not by the address alone, so prose that quotes an
   address is left alone, and so is a "Thanks, / Bob" sign-off.
 - Splits the quoted history into `##` sections titled by sender and date, in
