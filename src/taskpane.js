@@ -250,14 +250,14 @@
   // ---------- signatures and boilerplate ----------
   //
   // Gateway security banners ("This message came from outside your
-  // organisation", phishing-alert strips, and similar) are DELIBERATELY NOT
+  // organization", phishing-alert strips, and similar) are DELIBERATELY NOT
   // stripped, even though they are repetitive and repeat once per quoted layer.
   // The usual destination for this Markdown is an LLM, and the fact that a
   // message was flagged as external or suspicious is exactly the kind of
   // context that should survive the trip. Removing it would quietly strip a
   // safety signal on the way into a system that acts on the text.
   //
-  // They cost little now that tables are normalised: what is left is a line or
+  // They cost little now that tables are normalized: what is left is a line or
   // two of plain prose, not a wall of markup. If a banner ever arrives as
   // clutter rather than text, fix the markup handling — do not add the wording
   // to DISCLAIMER.
@@ -573,7 +573,7 @@
   // Inside a header field the entire value is people, so a display name may be
   // anything up to the angle bracket. The same pattern in running prose would
   // swallow the sentence in front of the address ("write to <bob@…>"), so there
-  // a name has to look like one: up to four capitalised words.
+  // a name has to look like one: up to four capitalized words.
   var FIELD_NAME_SRC = "(?:\"([^\"\\r\\n]*)\"|([^<>;,\\r\\n]*?))";
   var TEXT_NAME_SRC = "(?:\"([^\"\\r\\n]{1,80})\"|" +
     "((?:[A-Z\\u00c0-\\u024f][^\\s<>;,]*)(?:[ \\u00a0][A-Z\\u00c0-\\u024f][^\\s<>;,]*){0,3})?)";
@@ -934,7 +934,7 @@
 
   // ---------- theme ----------
   // Outlook's theme can differ from the OS theme that prefers-color-scheme
-  // reports, so prefer Office's own body colour when the host exposes it.
+  // reports, so prefer Office's own body color when the host exposes it.
   function applyTheme() {
     try {
       var theme = Office.context && Office.context.officeTheme;

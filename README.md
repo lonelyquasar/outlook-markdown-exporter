@@ -231,7 +231,7 @@ fact that a message was flagged is context worth preserving.
   own. It stays stable through the conversion, but nothing can prove it is the
   same Bob as an address elsewhere in the thread.
 - Inline images are dropped; linked images become `![alt](url)`.
-- **Layout vs. data is a judgement call.** A table counts as data when it is at
+- **Layout vs. data is a judgment call.** A table counts as data when it is at
   least 2×2, every row has the same number of cells, no cell contains another
   table, and no cell holds a stack of blocks (unless the table has a visible
   `border`, which settles it as a grid). Everything else is unwrapped. So a

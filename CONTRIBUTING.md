@@ -26,7 +26,7 @@ Markdown:
 - invoice, ticket, order, and case numbers, and monetary amounts
 
 Replace them using the scheme the tests already use: people are **Alice**,
-**Bob**, and **Carol** at `example.com`, organisations are **Example Corp**,
+**Bob**, and **Carol** at `example.com`, organizations are **Example Corp**,
 and links point at `example.com`.
 
 **Keep the structure — that is the part we actually need.** Outlook's markup
@@ -43,7 +43,7 @@ A report that says "a three-deep `MsoNormalTable` whose innermost cell holds a
 `<p class=MsoNormal>` came out as X, expected Y" is more useful than a real
 transcript, and costs no one their privacy.
 
-### The add-in's own options are not a sanitiser
+### The add-in's own options are not a sanitizer
 
 **Strip email addresses to names** with **Alias all names** will replace
 addressed people with `User1`, `User2`, and so on. That is a convenience, not a
@@ -71,7 +71,7 @@ Include:
 
 1. Version and client, from that footer.
 2. Which options were on (the four checkboxes and the name mode).
-3. A **sanitised** minimal fragment of the source HTML, if you can get it.
+3. A **sanitized** minimal fragment of the source HTML, if you can get it.
 4. What you got, and what you expected.
 
 The most valuable bug report is a fragment small enough to become a test
@@ -102,11 +102,11 @@ local HTTPS server plus a manifest pointing at it.
 - **No dependencies.** Turndown and its GFM plugin are vendored unmodified in
   `src/vendor/`; the only other packages are the test harness's, and the
   add-in must never require a build to run.
-- **Colours come from CSS custom properties** (`--fg`, `--muted`, `--border`,
+- **Colors come from CSS custom properties** (`--fg`, `--muted`, `--border`,
   `--accent`). The pane follows Outlook's light and dark themes; never
-  hardcode a colour.
+  hardcode a color.
 - **Comment the why, not the what.** Most of the tricky code here exists
-  because of a specific Outlook behaviour — say which one.
+  because of a specific Outlook behavior — say which one.
 
 ### Versioning and releases
 
@@ -135,7 +135,7 @@ conversion; you only edit the one number.
   far has a regression test that fails without it — please check that yours
   does too, by temporarily reverting your fix.
 - Keep fixtures in the Alice/Bob/Carol scheme.
-- Update the README if you change behaviour, including its **Limitations**
+- Update the README if you change behavior, including its **Limitations**
   list if you add or remove one.
 
 ## License
