@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
   - name: Security vulnerability
-    url: https://github.com/mackenzieclark/outlook-markdown-exporter/security/advisories/new
+    url: https://github.com/lonelyquasar/outlook-markdown-exporter/security/advisories/new
     about: Report privately. Do not open a public issue for a vulnerability.
   - name: Question or idea
-    url: https://github.com/mackenzieclark/outlook-markdown-exporter/discussions
+    url: https://github.com/lonelyquasar/outlook-markdown-exporter/discussions
     about: For anything that is not a specific bug. The same rule applies — no real email content.

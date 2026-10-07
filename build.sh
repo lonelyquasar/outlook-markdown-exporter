@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Usage: ./build.sh <base-url> [repo-url] [out-dir]
+# Usage: ./build.sh <base-url> [site-url] [out-dir]
 #
 # Builds both sideloadable manifests from the templates and stamps the version
 # into the task pane. <Version> in manifest.template.xml is the single source of
 # truth for the version number; nothing else needs editing to cut a release.
 #
-#   ./build.sh https://you.github.io/your-repo https://github.com/you/your-repo
+#   ./build.sh https://you.github.io/your-repo https://you.example/your-page
 #   ./build.sh https://localhost:3000 https://localhost:3000 dist   # local testing
 #
 # Writes <out-dir>/manifest.xml, <out-dir>/manifest.json and the zipped app
@@ -13,7 +13,7 @@
 set -euo pipefail
 here="$(cd "$(dirname "$0")" && pwd)"
 base="${1:?base url}"; base="${base%/}"
-repo="${2:-$base}"; repo="${repo%/}"
+site="${2:-$base}"; site="${site%/}"
 out="${3:-$here}"
 
 version="$(sed -n 's:.*<Version>\([^<]*\)</Version>.*:\1:p' "$here/manifest.template.xml" | head -1)"
@@ -25,7 +25,7 @@ version="$(sed -n 's:.*<Version>\([^<]*\)</Version>.*:\1:p' "$here/manifest.temp
 version_json="$(echo "$version" | cut -d. -f1-3)"
 
 stamp() {
-  sed -e "s|__BASE_URL__|$base|g" -e "s|__REPO_URL__|$repo|g" -e "s|__VERSION__|$2|g" "$1"
+  sed -e "s|__BASE_URL__|$base|g" -e "s|__SITE_URL__|$site|g" -e "s|__VERSION__|$2|g" "$1"
 }
 
 mkdir -p "$out"

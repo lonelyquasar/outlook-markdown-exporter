@@ -38,7 +38,7 @@ HTTPS each time it opens:
 
 - `appsforoffice.microsoft.com` — the Office.js library, served by Microsoft.
 - Whichever host the manifest points at (by default
-  `mackenzieclark.github.io`, this repository's GitHub Pages site) — the
+  `lonelyquasar.github.io`, this repository's GitHub Pages site) — the
   task pane's HTML, JavaScript, and icons.
 
 Those hosts see an ordinary web request for a static file, of the kind any web
@@ -55,4 +55,4 @@ the changelog.
 ## Contact
 
 Open an issue at
-<https://github.com/mackenzieclark/outlook-markdown-exporter/issues>.
+<https://github.com/lonelyquasar/outlook-markdown-exporter/issues>.

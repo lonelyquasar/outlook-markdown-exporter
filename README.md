@@ -97,7 +97,7 @@ to satisfy that; neither needs Node (it's only used by the test harness).
 ### Option A: install straight from this repo — no clone, no hosting
 
 Two manifests are committed, both already pointing at this repo's
-[GitHub Pages](https://mackenzieclark.github.io/outlook-markdown-exporter)
+[GitHub Pages](https://lonelyquasar.github.io/outlook-markdown-exporter)
 site, which serves the task pane over HTTPS with correct MIME types. Nothing
 to build or deploy — pick the one that matches your client:
 

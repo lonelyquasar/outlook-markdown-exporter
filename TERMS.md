@@ -52,4 +52,4 @@ the changelog.
 ## Contact
 
 Open an issue at
-<https://github.com/mackenzieclark/outlook-markdown-exporter/issues>.
+<https://github.com/lonelyquasar/outlook-markdown-exporter/issues>.

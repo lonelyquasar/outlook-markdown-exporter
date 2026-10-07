@@ -58,7 +58,7 @@ usually the only real fix.
 ### Security issues
 
 Do not open a public issue for a vulnerability. Use GitHub's private
-[security advisory](https://github.com/mackenzieclark/outlook-markdown-exporter/security/advisories/new)
+[security advisory](https://github.com/lonelyquasar/outlook-markdown-exporter/security/advisories/new)
 form instead.
 
 ## Filing a good bug
