@@ -15,9 +15,9 @@ alongside it automatically.)
 
 ## Summary (100 chars max)
 
-Copy the open email, quoted thread included, as clean Markdown for LLMs, Obsidian, tickets and wikis.
+Copy the open email, quoted thread included, as clean Markdown for LLMs, Obsidian, tickets, wikis.
 
-(99 characters.)
+(98 characters.)
 
 ## Description
 
