@@ -1,11 +1,11 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.17/MicrosoftTeams.schema.json",
   "manifestVersion": "1.17",
-  "id": "bd2bae9e-e017-43b1-9d50-f1a210c3b569",
+  "id": "__APP_ID__",
   "version": "__VERSION__",
   "name": {
-    "short": "Copy as Markdown",
-    "full": "Copy as Markdown for Outlook"
+    "short": "Copy as Markdown__NAME_SUFFIX__",
+    "full": "Copy as Markdown for Outlook__NAME_SUFFIX__"
   },
   "description": {
     "short": "Copy the open email and its quoted thread to the clipboard as Markdown.",

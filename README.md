@@ -152,7 +152,11 @@ system trust store itself (which is what makes Outlook's WebView accept it):
    ```
 3. `caddy run` from the repo root; approve the one-time trust prompt.
 4. `./build.sh https://localhost:3000 https://localhost:3000 dist`, then
-   sideload `dist/manifest.xml` as in Option A.
+   sideload `dist/manifest.xml` as in Option A. A localhost build (or any
+   build with `DEV=1`) gets its own add-in ids and is named "Copy as Markdown
+   (dev)", so it installs alongside the real one instead of replacing it —
+   Outlook keys add-ins on the id, and a dev copy wearing the production id
+   would block the real one and be hard to remove once its server is gone.
 
 The server must be running whenever you use the button — `caddy start` from
 a login task (e.g. a shortcut in `shell:startup`) makes that permanent.
