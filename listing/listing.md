@@ -82,8 +82,36 @@ terms page.
 | Screenshot 1 | `listing/listing-light.png` | 1366 x 768, under 1024 KB |
 | Screenshot 2 | `listing/listing-dark.png` | 1366 x 768, under 1024 KB |
 
-Screenshot caption (both): "The open message converted to Markdown with
-frontmatter and a split reply chain, ready to copy."
+Screenshot captions are alt text, so they describe the image for screen
+reader users rather than summarize it. Both screenshots show the same pane
+state; only the theme differs.
+
+Screenshot 1 (light):
+
+> The Copy as Markdown task pane in Outlook's light theme. At the top are two
+> buttons, "Copy Markdown" and "Save .md". Below them, four checked
+> checkboxes: "YAML frontmatter", "Split quoted replies into sections", "Strip
+> signatures and boilerplate", and "Strip email addresses to names", with
+> three radio options under the last one: "Display name" (selected), "First
+> name only", and "Alias all names". A green status line reads "Copied 789
+> chars to clipboard." Beneath it, a scrollable monospace preview shows the
+> converted email: a YAML block with subject "RE: Q3 Deliverables", from
+> "Alice Example", to "Bob Example", the date, message and conversation ids,
+> and an attachment named plan.xlsx, followed by the message body as Markdown
+> with a heading, bold and italic text, a two-item bulleted list, and a small
+> table of Env and Status. The footer shows version 1.4.0.0 and the Outlook
+> host build.
+
+Screenshot 2 (dark): the same text with the first sentence ending "in
+Outlook's dark theme".
+
+Shorter fallback if the field's character limit rejects the above:
+
+> Copy as Markdown task pane, light theme: Copy Markdown and Save .md
+> buttons, four checked options for frontmatter, splitting replies, stripping
+> signatures and replacing addresses with display names, a status line
+> reading "Copied 789 chars to clipboard", and a preview of the converted
+> email with YAML frontmatter, heading, list and table.
 
 ## Notes for certification
 
