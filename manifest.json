@@ -9,7 +9,7 @@
   },
   "description": {
     "short": "Copy the open email and its quoted thread to the clipboard as Markdown.",
-    "full": "Converts the open email, including its quoted reply chain, to clean Markdown with YAML frontmatter and puts it on the clipboard, ready to paste into an LLM agent, Obsidian, a ticket, or anywhere else. Strips Outlook and Word HTML noise, unwraps Safe Links, converts tables and lists, and splits the quoted history into sections titled by sender and date. Conversion runs entirely in the task pane; message content is never sent anywhere."
+    "full": "Converts the open email, including its quoted reply chain, to clean Markdown with YAML frontmatter and puts it on the clipboard, ready to paste into an LLM agent, your notes, a ticket, or anywhere else. Strips Outlook and Word HTML noise, unwraps Safe Links, converts tables and lists, and splits the quoted history into sections titled by sender and date. Conversion runs entirely in the task pane; message content is never sent anywhere."
   },
   "developer": {
     "name": "Lonely Quasar",

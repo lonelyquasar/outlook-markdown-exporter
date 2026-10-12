@@ -15,13 +15,13 @@ alongside it automatically.)
 
 ## Summary (100 chars max)
 
-Copy the open email, quoted thread included, as clean Markdown for LLMs, Obsidian, tickets, wikis.
+Copy the open email, quoted thread included, as clean Markdown for LLMs, notes, tickets, wikis.
 
 (98 characters.)
 
 ## Description
 
-<p>Copy as Markdown converts the email you have open into clean, portable Markdown and puts it on the clipboard with one click. Paste it into an AI assistant, a notes app such as Obsidian, a ticket, a wiki page, or anywhere else plain text is welcome.</p>
+<p>Copy as Markdown converts the email you have open into clean, portable Markdown and puts it on the clipboard with one click. Paste it into an AI assistant, a notes app, a ticket, a wiki page, or anywhere else plain text is welcome.</p>
 
 <p><b>What you get</b></p>
 <ul>

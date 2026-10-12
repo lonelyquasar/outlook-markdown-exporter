@@ -2,7 +2,7 @@
 
 One-button **Copy as Markdown** for Outlook. Converts the open email — including
 its quoted reply chain — to clean Markdown with YAML frontmatter and puts it on
-the clipboard, ready to paste into an LLM agent, Obsidian, a ticket, anywhere.
+the clipboard, ready to paste into an LLM agent, your notes, a ticket, anywhere.
 
 Works in **New Outlook**, **Outlook on the web**, and classic Outlook for
 Windows/Mac (anything that runs Office.js add-ins). No VBA, no Pandoc, no
