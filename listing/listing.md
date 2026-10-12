@@ -115,6 +115,17 @@ Shorter fallback if the field's character limit rejects the above:
 
 ## Notes for certification
 
+Partner Center's "Additional certification info" page takes these notes as a
+PDF upload. `listing/certification-notes.pdf` is the rendered copy, built from
+`listing/certification-notes.html` with:
+
+```sh
+cd listing && google-chrome --headless=new --no-pdf-header-footer \
+  --print-to-pdf=certification-notes.pdf certification-notes.html
+```
+
+The text below is the same content for reference.
+
 Copy as Markdown needs no account, sign-in, license key or purchase. It has
 no server component.
 

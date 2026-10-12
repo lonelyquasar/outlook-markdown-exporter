@@ -1,0 +1,47 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Copy as Markdown: certification testing notes</title>
+<style>
+body{font-family:Segoe UI,Helvetica,Arial,sans-serif;font-size:11pt;line-height:1.45;max-width:7in;margin:0.6in auto;color:#111}
+h1{font-size:18pt;margin-bottom:0}h2{font-size:13pt;margin-top:1.4em}
+.meta{color:#555;margin-top:2px}
+ol li{margin-bottom:6px}
+img{width:100%;border:1px solid #ccc;margin:6px 0 14px}
+figcaption{font-size:9.5pt;color:#555;margin-bottom:12px}
+code{font-family:Consolas,monospace;font-size:10pt}
+</style></head><body>
+<h1>Copy as Markdown: testing notes for certification</h1>
+<p class="meta">Publisher: Lonely Quasar LLC. Add-in version 1.4.0. Offer type: Office add-in (Outlook). Prepared 2026-10-12.</p>
+
+<h2>Summary</h2>
+<p>Copy as Markdown is a read-mode Outlook task pane add-in that converts the open email, including its quoted reply chain, into Markdown and copies it to the clipboard. It needs no account, sign-in, license key or purchase, and it has no server component. The task pane's static files are served from GitHub Pages at <code>https://lonelyquasar.github.io/outlook-markdown-exporter/</code>. No other network requests are made, and no message content leaves the user's device.</p>
+
+<h2>Test accounts and credentials</h2>
+<p>None required. Any mailbox can be used. The add-in only requests the <code>MailboxItem.Read.User</code> permission and reads the message currently open.</p>
+
+<h2>Supported hosts</h2>
+<p>New Outlook for Windows, Outlook on the web, and classic Outlook for Windows and Mac (Mailbox requirement set 1.8 or later). The screenshots below were taken in new Outlook for Windows.</p>
+
+<h2>Steps to test</h2>
+<ol>
+<li>Open any received email in Outlook. A message with a quoted reply chain exercises the most functionality.</li>
+<li>On the message, choose the <b>Copy as Markdown</b> button. In new Outlook and Outlook on the web it is under the "..." overflow menu on the message toolbar; in classic Outlook it is on the ribbon.</li>
+<li>The task pane opens and converts the message immediately. A Markdown preview appears in the pane with a YAML frontmatter block (subject, sender, recipients, date, message id, attachment names) followed by the message body.</li>
+<li>Click <b>Copy Markdown</b>. The status line reports the number of characters copied. Paste into any text editor to confirm the clipboard contents match the preview.</li>
+<li>Click <b>Save .md</b>. The same text downloads as a <code>.md</code> file through the browser or host download mechanism.</li>
+<li>Toggle any of the four checkboxes (YAML frontmatter, split quoted replies into sections, strip signatures and boilerplate, strip email addresses to names) or the three address-style radio buttons. The conversion re-runs and the preview updates. These choices persist between messages.</li>
+</ol>
+
+<h2>Expected results</h2>
+<ul>
+<li>The preview and clipboard text are plain Markdown with no raw HTML.</li>
+<li>Quoted earlier messages in the thread appear as separate sections titled by sender and date when splitting is enabled.</li>
+<li>Formatting that matters (headings, bold, italic, lists, links, tables) survives as Markdown syntax.</li>
+<li>With address stripping enabled, email addresses are replaced by display names, first names, or stable aliases depending on the selected style.</li>
+</ul>
+
+<h2>Screenshots</h2>
+<figure><img src="listing-light.png" alt="Task pane, light theme"><figcaption>The task pane after converting a message, light theme. Buttons, options, the status line and the Markdown preview are visible.</figcaption></figure>
+<figure><img src="listing-dark.png" alt="Task pane, dark theme"><figcaption>The same state in dark theme.</figcaption></figure>
+
+<h2>Contact</h2>
+<p>Support and issue tracker: <code>https://github.com/lonelyquasar/outlook-markdown-exporter/issues</code>. Privacy policy: <code>https://lonelyquasar.com/outlook-markdown/privacy</code>. Terms: <code>https://lonelyquasar.com/outlook-markdown/terms</code>.</p>
+</body></html>
