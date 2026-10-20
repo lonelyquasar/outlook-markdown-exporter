@@ -1030,15 +1030,19 @@
       "is already converted: <b>Copy Markdown</b> puts it on the clipboard, " +
       "<b>Save .md</b> writes it to a file." },
     { target: "options", html:
-      "These options shape the output: frontmatter, one section per quoted " +
-      "reply, signature and disclaimer stripping, and swapping email addresses " +
-      "for names or aliases before you hand a thread to an AI assistant. They " +
-      "are remembered between messages." },
-    { target: null, html:
+      "These options shape the output. <b>YAML frontmatter</b> adds subject, " +
+      "sender, recipients and date at the top. <b>Split quoted replies</b> " +
+      "gives each message in the thread its own section. <b>Strip signatures " +
+      "and boilerplate</b> drops footers and disclaimers. <b>Strip email " +
+      "addresses to names</b> replaces addresses with display names, first " +
+      "names or stable aliases before you hand a thread to an AI assistant. " +
+      "Your choices are remembered between messages." },
+    { target: "help", compact: true, html:
       "Everything happens inside this pane on your device: no server, no " +
-      "account, nothing is sent anywhere. <b>Help</b> in the footer brings " +
-      "this back, and <a href=\"" + SUPPORT_URL + "\" target=\"_blank\" " +
-      "rel=\"noopener\">the support page</a> answers questions." },
+      "account, nothing is sent anywhere. The <b>Help</b> link in the footer, " +
+      "highlighted below, brings this tour back any time, and <a href=\"" +
+      SUPPORT_URL + "\" target=\"_blank\" rel=\"noopener\">the support " +
+      "page</a> answers questions." },
   ];
   var tourStep = -1;
 
@@ -1058,6 +1062,7 @@
   function clearTourTarget() {
     var el = document.querySelector(".tour-target");
     if (el) el.classList.remove("tour-target");
+    document.body.classList.remove("tour-compact");
   }
 
   function showTourStep(i) {
@@ -1069,6 +1074,7 @@
     $("tourNext").textContent = i === TOUR.length - 1 ? "Done" : "Next";
     $("tourSkip").hidden = i === TOUR.length - 1;
     if (step.target) $(step.target).classList.add("tour-target");
+    if (step.compact) document.body.classList.add("tour-compact");
     $("tour").hidden = false;
   }
 

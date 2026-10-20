@@ -953,17 +953,25 @@ check("a fresh install opens on the tour's first step, pointing at the buttons",
 });
 check("Next walks the steps; the last one reads Done and drops Skip", () => {
   const next = doc.getElementById("tourNext");
+  assert.ok(!doc.body.classList.contains("tour-compact"), "step 1 leaves the preview alone");
   next.click();
   assert.ok(doc.getElementById("options").classList.contains("tour-target"));
+  assert.ok(!doc.body.classList.contains("tour-compact"), "step 2 leaves the preview alone");
   next.click();
   assert.strictEqual(next.textContent, "Done");
   assert.strictEqual(doc.getElementById("tourSkip").hidden, true);
-  assert.strictEqual(doc.querySelector(".tour-target"), null, "last step highlights nothing");
 });
-check("Done hides the tour and persists the dismissal without touching options", () => {
+check("the last step shrinks the preview and rings the footer Help link", () => {
+  assert.ok(doc.body.classList.contains("tour-compact"));
+  assert.ok(doc.getElementById("help").classList.contains("tour-target"));
+  assert.ok(!doc.getElementById("options").classList.contains("tour-target"));
+});
+check("Done hides the tour, restores the preview and persists the dismissal without touching options", () => {
   const before = roamingSaves;
   doc.getElementById("tourNext").click();
   assert.strictEqual(doc.getElementById("tour").hidden, true);
+  assert.ok(!doc.body.classList.contains("tour-compact"), "preview back to full height");
+  assert.strictEqual(doc.querySelector(".tour-target"), null);
   assert.ok(roamingSaves > before, "saveAsync was called");
   assert.strictEqual(roamingStored.tourDone, true);
   assert.strictEqual(roamingStored.options, undefined);
@@ -985,6 +993,15 @@ check("the footer Help link brings the tour back from the start", () => {
   doc.getElementById("help").click();
   assert.strictEqual(doc.getElementById("tour").hidden, false);
   assert.ok(doc.getElementById("tourCount").textContent.startsWith("1 of"));
+});
+check("every option's checkbox label appears verbatim in step 2", () => {
+  doc.getElementById("tourNext").click();
+  const text = doc.getElementById("tourText").textContent;
+  for (const id of ["frontmatter", "splitThread", "stripBoilerplate", "stripEmails"]) {
+    const label = doc.getElementById(id).parentNode.textContent.trim();
+    assert.ok(text.includes(label.replace(" into sections", "")), label);
+  }
+  doc.getElementById("tourSkip").click();
 });
 check("the tour does not get in the way of the conversion", () => {
   assert.ok(doc.getElementById("out").value.length > 0);

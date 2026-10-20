@@ -49,6 +49,10 @@
       --err: #ff9a92;
     }
 
+    /* overflow-x: a sideways scroll of the pane was seen in new Outlook on
+       Windows during the tour; nothing here is meant to be wider than the
+       pane, so simply forbid it. */
+    html, body { overflow-x: hidden; }
     body {
       font: 13px/1.4 system-ui, Segoe UI, sans-serif;
       margin: 0; padding: 12px;
@@ -62,19 +66,27 @@
     }
     button:hover { border-color: var(--accent); }
     /* First-run tour: a callout card above the controls, with the element the
-       current step talks about outlined in the accent color. */
+       current step talks about ringed in the accent color. The ring is an
+       inset shadow inside the target's own padding rather than an outline:
+       an outline paints outside the box, and in a narrow Outlook pane that
+       put it past the left edge where it was clipped. */
     .tour {
       margin: 0 0 12px; padding: 10px 12px;
       border: 1px solid var(--accent); border-radius: 6px;
       background: var(--field-bg);
     }
     .tour[hidden] { display: none; }
-    .tour p { margin: 0 0 8px; }
-    .tour-nav { display: flex; align-items: center; gap: 10px; }
+    .tour p { margin: 0 0 8px; overflow-wrap: anywhere; }
+    .tour-nav { display: flex; align-items: center; gap: 12px; }
     .tour-nav button { margin: 0; }
-    .tour-nav .count { color: var(--muted); font-size: 11px; margin-left: auto; }
-    .tour-nav a { color: var(--muted); font-size: 11px; }
-    .tour-target { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+    .tour-nav .count { color: var(--muted); font-size: 12px; margin-left: auto; }
+    .tour-nav a { color: var(--fg); font-size: 12px; }
+    #actions, #options { padding: 6px; margin-bottom: 4px; border-radius: 4px; }
+    footer a { padding: 1px 3px; border-radius: 3px; }
+    .tour-target { box-shadow: inset 0 0 0 2px var(--accent); }
+    /* Step 3 points at the footer, which the preview normally pushes below
+       the fold; shrink the preview for the duration of that step only. */
+    .tour-compact textarea { height: 22vh; }
     label { display: block; margin: 6px 0; color: var(--fg); }
     input[type="checkbox"], input[type="radio"] { accent-color: var(--accent); }
     /* Child settings hang off their parent checkbox: indented past the box and
@@ -138,6 +150,6 @@
   <!-- The ?v= must match VERSION in taskpane.js. Outlook caches add-in
        subresources in its own file cache, which ignores Cache-Control, so a
        changed URL is the only reliable way to ship a JS update. -->
-  <script src="taskpane.js?v=1.4.2.0"></script>
+  <script src="taskpane.js?v=1.4.3.0"></script>
 </body>
 </html>
