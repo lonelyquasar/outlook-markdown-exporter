@@ -58,12 +58,18 @@ Productivity (primary). Optionally Collaboration. No industry.
 
 | Field | Value |
 | --- | --- |
-| Support document link | https://lonelyquasar.com/outlook-markdown/ |
+| Support document link | https://lonelyquasar.com/outlook-markdown/support |
 | Privacy policy link | https://lonelyquasar.com/outlook-markdown/privacy |
 | EULA link | https://lonelyquasar.com/outlook-markdown/terms |
 
 Do not tick "Standard Contract"; it cannot be reversed and we have our own
 terms page.
+
+The support link must be the `/support` page, not the product page and not
+the GitHub issues URL. Certification policy 100.5.1.3 rejected the issues
+URL (October 2026): the reviewer wants a page that visibly offers email,
+phone, a contact form, chat or a community forum. The support page lists
+`support@lonelyquasar.com` and the issue tracker.
 
 ## Product setup answers
 

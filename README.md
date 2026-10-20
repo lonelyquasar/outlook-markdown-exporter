@@ -248,6 +248,12 @@ fact that a message was flagged is context worth preserving.
   Turn the checkbox off to get everything verbatim.
 - Requires Mailbox requirement set 1.8 (any current Outlook).
 
+## Support
+
+Email [support@lonelyquasar.com](mailto:support@lonelyquasar.com) or see the
+[support page](https://lonelyquasar.com/outlook-markdown/support) for common
+questions. Bugs go in the issue tracker, sanitized as described below.
+
 ## Contributing
 
 Issues and pull requests welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).

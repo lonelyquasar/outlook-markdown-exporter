@@ -61,6 +61,7 @@
       border: 1px solid var(--border); border-radius: 4px;
     }
     button:hover { border-color: var(--accent); }
+    .intro { margin: 0 0 10px; }
     label { display: block; margin: 6px 0; color: var(--fg); }
     input[type="checkbox"], input[type="radio"] { accent-color: var(--accent); }
     /* Child settings hang off their parent checkbox: indented past the box and
@@ -88,6 +89,12 @@
   </style>
 </head>
 <body>
+  <!-- AppSource's first-run-experience check wants the pane itself to say
+       what the add-in does; the store listing alone was not accepted. -->
+  <p class="intro">Turns the email you have open, quoted replies included, into
+    clean Markdown with YAML frontmatter. Copy it or save a .md file, then paste
+    it into an AI assistant, your notes, a ticket or a wiki. Nothing leaves your
+    device.</p>
   <div>
     <button id="copy">Copy Markdown</button>
     <button id="download">Save .md</button>
@@ -110,6 +117,6 @@
   <!-- The ?v= must match VERSION in taskpane.js. Outlook caches add-in
        subresources in its own file cache, which ignores Cache-Control, so a
        changed URL is the only reliable way to ship a JS update. -->
-  <script src="taskpane.js?v=1.4.0.0"></script>
+  <script src="taskpane.js?v=1.4.1.0"></script>
 </body>
 </html>
