@@ -61,7 +61,20 @@
       border: 1px solid var(--border); border-radius: 4px;
     }
     button:hover { border-color: var(--accent); }
-    .intro { margin: 0 0 10px; }
+    /* First-run tour: a callout card above the controls, with the element the
+       current step talks about outlined in the accent color. */
+    .tour {
+      margin: 0 0 12px; padding: 10px 12px;
+      border: 1px solid var(--accent); border-radius: 6px;
+      background: var(--field-bg);
+    }
+    .tour[hidden] { display: none; }
+    .tour p { margin: 0 0 8px; }
+    .tour-nav { display: flex; align-items: center; gap: 10px; }
+    .tour-nav button { margin: 0; }
+    .tour-nav .count { color: var(--muted); font-size: 11px; margin-left: auto; }
+    .tour-nav a { color: var(--muted); font-size: 11px; }
+    .tour-target { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
     label { display: block; margin: 6px 0; color: var(--fg); }
     input[type="checkbox"], input[type="radio"] { accent-color: var(--accent); }
     /* Child settings hang off their parent checkbox: indented past the box and
@@ -89,16 +102,22 @@
   </style>
 </head>
 <body>
-  <!-- AppSource's first-run-experience check wants the pane itself to say
-       what the add-in does; the store listing alone was not accepted. -->
-  <p class="intro">Turns the email you have open, quoted replies included, into
-    clean Markdown with YAML frontmatter. Copy it or save a .md file, then paste
-    it into an AI assistant, your notes, a ticket or a wiki. Nothing leaves your
-    device.</p>
-  <div>
+  <!-- Filled in and shown by taskpane.js on a user's first open (and from the
+       Help link). AppSource's first-run-experience check wants the pane
+       itself to say what the add-in is for. -->
+  <div id="tour" class="tour" hidden>
+    <p id="tourText"></p>
+    <div class="tour-nav">
+      <button id="tourNext" type="button">Next</button>
+      <a href="#" id="tourSkip">Skip</a>
+      <span class="count" id="tourCount"></span>
+    </div>
+  </div>
+  <div id="actions">
     <button id="copy">Copy Markdown</button>
     <button id="download">Save .md</button>
   </div>
+  <div id="options">
   <label><input type="checkbox" id="frontmatter" checked> YAML frontmatter</label>
   <label><input type="checkbox" id="splitThread" checked> Split quoted replies into sections</label>
   <label><input type="checkbox" id="stripBoilerplate" checked> Strip signatures and boilerplate</label>
@@ -108,15 +127,17 @@
     <label><input type="radio" name="nameMode" id="nameFirst" value="first"> First name only</label>
     <label><input type="radio" name="nameMode" id="nameAlias" value="alias"> Alias all names</label>
   </div>
+  </div>
   <div id="status"></div>
   <textarea id="out" spellcheck="false"></textarea>
   <footer>
     <span id="version"></span>
+    <a href="#" id="help">Help</a>
     <span id="host"></span>
   </footer>
   <!-- The ?v= must match VERSION in taskpane.js. Outlook caches add-in
        subresources in its own file cache, which ignores Cache-Control, so a
        changed URL is the only reliable way to ship a JS update. -->
-  <script src="taskpane.js?v=1.4.1.0"></script>
+  <script src="taskpane.js?v=1.4.2.0"></script>
 </body>
 </html>

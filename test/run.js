@@ -477,7 +477,7 @@ check("a protected link whose text is not a URL keeps the rewritten href", () =>
 console.log("\nstrip signatures and boilerplate");
 check("the checkbox ships checked, between split and strip-emails", () => {
   const fresh = new JSDOM(fs.readFileSync(__dirname + "/../src/taskpane.html", "utf8")).window.document;
-  const ids = [...fresh.querySelectorAll("body > label > input")].map((i) => i.id);
+  const ids = [...fresh.querySelectorAll("#options > label > input")].map((i) => i.id);
   assert.deepStrictEqual(ids, ["frontmatter", "splitThread", "stripBoilerplate", "stripEmails"]);
   assert.strictEqual(fresh.getElementById("stripBoilerplate").checked, true);
   // The radio group must still hang off stripEmails, not off the new checkbox.
@@ -940,6 +940,54 @@ check("repeat conversions stay byte-identical", () => {
   assert.strictEqual(run({ fixture: G }), gOut);
   assert.strictEqual(run({ fixture: H }), hOut);
   assert.strictEqual(run({ fixture: I }), iOut);
+});
+
+console.log("\nfirst-run tour");
+check("a fresh install opens on the tour's first step, pointing at the buttons", () => {
+  roamingStored = {};
+  roamingDraft = {};
+  reopen();
+  assert.strictEqual(doc.getElementById("tour").hidden, false);
+  assert.ok(doc.getElementById("tourCount").textContent.startsWith("1 of"));
+  assert.ok(doc.getElementById("actions").classList.contains("tour-target"));
+});
+check("Next walks the steps; the last one reads Done and drops Skip", () => {
+  const next = doc.getElementById("tourNext");
+  next.click();
+  assert.ok(doc.getElementById("options").classList.contains("tour-target"));
+  next.click();
+  assert.strictEqual(next.textContent, "Done");
+  assert.strictEqual(doc.getElementById("tourSkip").hidden, true);
+  assert.strictEqual(doc.querySelector(".tour-target"), null, "last step highlights nothing");
+});
+check("Done hides the tour and persists the dismissal without touching options", () => {
+  const before = roamingSaves;
+  doc.getElementById("tourNext").click();
+  assert.strictEqual(doc.getElementById("tour").hidden, true);
+  assert.ok(roamingSaves > before, "saveAsync was called");
+  assert.strictEqual(roamingStored.tourDone, true);
+  assert.strictEqual(roamingStored.options, undefined);
+});
+check("a dismissed tour stays dismissed when the pane reopens", () => {
+  reopen();
+  assert.strictEqual(doc.getElementById("tour").hidden, true);
+  assert.strictEqual(doc.querySelector(".tour-target"), null);
+});
+check("Skip on the first step dismisses it for good too", () => {
+  roamingStored = {};
+  roamingDraft = {};
+  reopen();
+  doc.getElementById("tourSkip").click();
+  assert.strictEqual(doc.getElementById("tour").hidden, true);
+  assert.strictEqual(roamingStored.tourDone, true);
+});
+check("the footer Help link brings the tour back from the start", () => {
+  doc.getElementById("help").click();
+  assert.strictEqual(doc.getElementById("tour").hidden, false);
+  assert.ok(doc.getElementById("tourCount").textContent.startsWith("1 of"));
+});
+check("the tour does not get in the way of the conversion", () => {
+  assert.ok(doc.getElementById("out").value.length > 0);
 });
 
 console.log("\n" + checks + " checks passed.");

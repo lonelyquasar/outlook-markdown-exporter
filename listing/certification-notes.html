@@ -9,7 +9,7 @@ figcaption{font-size:9.5pt;color:#555;margin-bottom:12px}
 code{font-family:Consolas,monospace;font-size:10pt}
 </style></head><body>
 <h1>Copy as Markdown: testing notes for certification</h1>
-<p class="meta">Publisher: Lonely Quasar LLC. Add-in version 1.4.1. Offer type: Office add-in (Outlook). Prepared 2026-10-12, revised 2026-10-20.</p>
+<p class="meta">Publisher: Lonely Quasar LLC. Add-in version 1.4.2. Offer type: Office add-in (Outlook). Prepared 2026-10-12, revised 2026-10-20.</p>
 
 <h2>Summary</h2>
 <p>Copy as Markdown is a read-mode Outlook task pane add-in that converts the open email, including its quoted reply chain, into Markdown and copies it to the clipboard. It needs no account, sign-in, license key or purchase, and it has no server component. The task pane's static files are served from GitHub Pages at <code>https://lonelyquasar.github.io/outlook-markdown-exporter/</code>. No other network requests are made, and no message content leaves the user's device.</p>
@@ -23,6 +23,7 @@ code{font-family:Consolas,monospace;font-size:10pt}
 <h2>Steps to test</h2>
 <ol>
 <li>Open any received email in Outlook. A message with a quoted reply chain exercises the most functionality.</li>
+<li>On a user's first open the pane shows a three-step introduction card (what the add-in does, what the options change, that nothing leaves the device). Next/Done or Skip dismisses it and it does not return for that user; the Help link in the footer reopens it.</li>
 <li>On the message, choose the <b>Copy as Markdown</b> button. In new Outlook and Outlook on the web it is under the "..." overflow menu on the message toolbar; in classic Outlook it is on the ribbon.</li>
 <li>The task pane opens and converts the message immediately. A Markdown preview appears in the pane with a YAML frontmatter block (subject, sender, recipients, date, message id, attachment names) followed by the message body.</li>
 <li>Click <b>Copy Markdown</b>. The status line reports the number of characters copied. Paste into any text editor to confirm the clipboard contents match the preview.</li>

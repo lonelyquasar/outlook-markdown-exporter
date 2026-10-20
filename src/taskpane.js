@@ -1016,6 +1016,71 @@
 
   function optionChanged() { saveSettings(); render(false); }
 
+  // ---------- first-run tour ----------
+  // AppSource's first-run-experience check wants the pane itself to say what
+  // the add-in is for. A permanent banner did that at the cost of every later
+  // open, so this is a three-step card shown once per user (roamingSettings
+  // follows them between machines) and again on request from the Help link.
+  var TOUR_KEY = "tourDone";
+  var SUPPORT_URL = "https://lonelyquasar.com/outlook-markdown/support";
+  var TOUR = [
+    { target: "actions", html:
+      "<b>Copy as Markdown</b> turns the email you have open, quoted replies " +
+      "included, into clean Markdown with YAML frontmatter. The preview below " +
+      "is already converted: <b>Copy Markdown</b> puts it on the clipboard, " +
+      "<b>Save .md</b> writes it to a file." },
+    { target: "options", html:
+      "These options shape the output: frontmatter, one section per quoted " +
+      "reply, signature and disclaimer stripping, and swapping email addresses " +
+      "for names or aliases before you hand a thread to an AI assistant. They " +
+      "are remembered between messages." },
+    { target: null, html:
+      "Everything happens inside this pane on your device: no server, no " +
+      "account, nothing is sent anywhere. <b>Help</b> in the footer brings " +
+      "this back, and <a href=\"" + SUPPORT_URL + "\" target=\"_blank\" " +
+      "rel=\"noopener\">the support page</a> answers questions." },
+  ];
+  var tourStep = -1;
+
+  function tourDone() {
+    var rs = roaming();
+    try { if (rs && rs.get(TOUR_KEY) === true) return true; } catch (e) { /* fall through */ }
+    // Hosts without roamingSettings would otherwise show the tour every open.
+    try { return window.localStorage.getItem(TOUR_KEY) === "1"; } catch (e) { return false; }
+  }
+
+  function rememberTourDone() {
+    var rs = roaming();
+    try { if (rs) { rs.set(TOUR_KEY, true); rs.saveAsync(function () {}); } } catch (e) { /* shows again next time */ }
+    try { window.localStorage.setItem(TOUR_KEY, "1"); } catch (e) { /* same */ }
+  }
+
+  function clearTourTarget() {
+    var el = document.querySelector(".tour-target");
+    if (el) el.classList.remove("tour-target");
+  }
+
+  function showTourStep(i) {
+    var step = TOUR[i];
+    clearTourTarget();
+    tourStep = i;
+    $("tourText").innerHTML = step.html;
+    $("tourCount").textContent = (i + 1) + " of " + TOUR.length;
+    $("tourNext").textContent = i === TOUR.length - 1 ? "Done" : "Next";
+    $("tourSkip").hidden = i === TOUR.length - 1;
+    if (step.target) $(step.target).classList.add("tour-target");
+    $("tour").hidden = false;
+  }
+
+  function endTour() {
+    clearTourTarget();
+    $("tour").hidden = true;
+    tourStep = -1;
+    rememberTourDone();
+  }
+
+  function startTour() { showTourStep(0); }
+
   // ---------- actions ----------
   function copy() {
     if (!current) return;
@@ -1080,10 +1145,16 @@
     $("nameDisplay").addEventListener("change", optionChanged);
     $("nameFirst").addEventListener("change", optionChanged);
     $("nameAlias").addEventListener("change", optionChanged);
+    $("tourNext").addEventListener("click", function () {
+      if (tourStep + 1 < TOUR.length) showTourStep(tourStep + 1); else endTour();
+    });
+    $("tourSkip").addEventListener("click", function (e) { e.preventDefault(); endTour(); });
+    $("help").addEventListener("click", function (e) { e.preventDefault(); startTour(); });
     loadSettings();
     syncNameMode();
     applyTheme();
     showBuild();
+    if (!tourDone()) startTour();
     render(true);
   });
 })();
